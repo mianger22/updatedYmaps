@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { YMaps, Map } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 const YandexMap = () => {
   const [currentLatitude, setLatitude] = useState(null);
@@ -16,7 +16,9 @@ const YandexMap = () => {
     <YMaps>
       {
         currentLatitude && currentLongitude && 
-          <Map defaultState={{ center: [+currentLatitude, +currentLongitude], zoom: 9 }} />
+          <Map defaultState={{ center: [+currentLatitude, +currentLongitude], zoom: 9 }}>
+            <Placemark defaultGeometry={[+currentLatitude, +currentLongitude]} />
+          </Map>
       }
     </YMaps>
   )
