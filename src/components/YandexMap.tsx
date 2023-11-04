@@ -16,7 +16,7 @@ const YandexMap = () => {
     <YMaps>
       {
         currentLatitude && currentLongitude && 
-          <Map defaultState={{ center: [+currentLatitude, +currentLongitude], zoom: 9 }}>
+          <Map defaultState={{ center: [+currentLatitude, +currentLongitude], zoom: 17 }}>
             <Placemark defaultGeometry={[+currentLatitude, +currentLongitude]} />
           </Map>
       }
