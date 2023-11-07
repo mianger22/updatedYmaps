@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { MapSection } from './MapSection';
 
 const YandexMap = () => {
-  const [myCoordinates, setMyCoordinates] = useState([0, 0]);
+  const [myCoordinates, setMyCoordinates] = useState([58.489678163799724, 31.203418886193724]);
   const [coordinatesList, setCoordinatesList] = useState([
     {
       place_id: 1,
@@ -31,29 +32,57 @@ const YandexMap = () => {
 
   //   console.clear();
   //   console.log(e.get('coords'))
-  //   // setFriendCoordinates(e.get('coords'));
   // };
 
   useEffect(() => {
-    // получаю местоположение пользователя и сохраняю его
-    navigator.geolocation.getCurrentPosition((position) => {
-      setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
-    });
+    //получаю местоположение пользователя и сохраняю его
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
+    // });
   }, []);
+
+  // const multiRoute = new ymaps.multiRouter.MultiRoute(
+  //   {
+  //     referencePoints: [pointA, pointB],
+  //     params: {
+  //       routingMode: "pedestrian"
+  //     }
+  //   },
+  //   {
+  //     boundsAutoApply: true
+  //   }
+  // );
 
   return (
     <YMaps>
       <Map 
-        defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 200, searchControlProvider: 'yandex#search'
-      }}
+        defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 200, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
       >
-        <Placemark geometry={myCoordinates} />
+        {/* <Placemark defaultGeometry={myCoordinates} 
+            /> */}
 
         {coordinatesList.map((coordinates) =>
-          <Placemark geometry={coordinates.location_coordinates} />
+          // <Placemark geometry={coordinates.location_coordinates} options={{
+          //   hintContent: 'Собственный значок метки',
+          //   balloonContentLayout: "this.state.balloonContent",
+          //   balloonPanelMaxMapArea: 1,
+          //   openEmptyBalloon: true
+          // }}  modules={["geoObject.addon.balloon"]} 
+         
+          // />
+<Placemark geometry={coordinates.location_coordinates} 
+          properties={{
+            hintContent: 'Это хинт',
+            balloonContent: 'Это балун'
+        }}
+        modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+
+          />
+
         )}
-      </Map>
+      </Map> 
+      {/* <MapSection /> */}
     </YMaps>
   )
 };
