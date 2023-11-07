@@ -73,7 +73,7 @@ const YandexMap = () => {
           // />
 <Placemark geometry={coordinates.location_coordinates} 
           properties={{
-            hintContent: 'Это хинт',
+            hintContent: coordinates.name_of_place,
             balloonContent: 'Это балун'
         }}
         modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
