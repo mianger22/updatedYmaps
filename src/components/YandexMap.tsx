@@ -7,25 +7,29 @@ const YandexMap = () => {
   const [placesList, setPlacesList] = useState([
     {
       place_id: 1,
-      name_of_place: 'Создание роботов',
+      name_of_place: 'Цех генерации роботов',
+      received_resource: 'Роботы',
       location_coordinates: [58.489678163799724, 31.203418886193724],
       place_icon: 'https://img.icons8.com/plasticine/100/robot.png'
     },
     {
       place_id: 2,
       name_of_place: 'Пекарня',
+      received_resource: 'Хлеб',
       location_coordinates: [58.490278023042286, 31.20354639149859],
       place_icon: 'https://img.icons8.com/external-others-cattaleeya-thongsriphong/64/external-bakery-shop-color-line-others-cattaleeya-thongsriphong.png'
     },
     {
       place_id: 3,
-      name_of_place: 'Нефть',
+      name_of_place: 'Нефтяной насос',
+      received_resource: 'Нефть',
       location_coordinates: [58.49011932332594, 31.203280852806106],
       place_icon: 'https://img.icons8.com/plasticine/100/oil-pump-jack.png'
     },
     {
       place_id: 4,
       name_of_place: 'Завод',
+      received_resource: 'Запчасти для роботов',
       location_coordinates: [58.489747737563725, 31.204050070106934],
       place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
     },
@@ -34,8 +38,9 @@ const YandexMap = () => {
   type PlaceInformationType = {
     place_id: number,
     name_of_place: string,
+    received_resource: string,
     location_coordinates: number[],
-    place_icon?: string
+    place_icon: string
   }
 
   // const changeFriendCoordinates = (e: any) => {
@@ -88,7 +93,11 @@ const YandexMap = () => {
             geometry={data_place.location_coordinates} 
             properties={{
               hintContent: data_place.name_of_place,
-              balloonContent: '<div id="driver-2" className="driver-card">Hi</div>',
+              balloonContent: `
+                <div id="driver-2" className="driver-card">
+                  Объект: <b>${data_place.name_of_place}</b><br>
+                  Ресурс: <b>${data_place.received_resource}</b>
+                </div>`,
               // iconContent: data_place.name_of_place[0],
             }}
             options={
