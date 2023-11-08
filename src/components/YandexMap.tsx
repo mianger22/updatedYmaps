@@ -4,28 +4,39 @@ import { MapSection } from './MapSection';
 
 const YandexMap = () => {
   const [myCoordinates, setMyCoordinates] = useState([58.489678163799724, 31.203418886193724]);
-  const [coordinatesList, setCoordinatesList] = useState([
+  const [placesList, setPlacesList] = useState([
     {
       place_id: 1,
-      name_of_place: "Кузница",
-      location_coordinates: [58.489678163799724, 31.203418886193724]
+      name_of_place: 'Создание роботов',
+      location_coordinates: [58.489678163799724, 31.203418886193724],
+      place_icon: 'https://img.icons8.com/plasticine/100/robot.png'
     },
     {
       place_id: 2,
-      name_of_place: "Пекарня",
-      location_coordinates: [58.490278023042286, 31.20354639149859]
+      name_of_place: 'Пекарня',
+      location_coordinates: [58.490278023042286, 31.20354639149859],
+      place_icon: 'https://img.icons8.com/external-others-cattaleeya-thongsriphong/64/external-bakery-shop-color-line-others-cattaleeya-thongsriphong.png'
     },
     {
       place_id: 3,
-      name_of_place: "Госпиталь",
-      location_coordinates: [58.49011932332594, 31.203280852806106]
+      name_of_place: 'Нефть',
+      location_coordinates: [58.49011932332594, 31.203280852806106],
+      place_icon: 'https://img.icons8.com/plasticine/100/oil-pump-jack.png'
     },
     {
       place_id: 4,
-      name_of_place: "Завод",
-      location_coordinates: [58.489747737563725, 31.204050070106934]
+      name_of_place: 'Завод',
+      location_coordinates: [58.489747737563725, 31.204050070106934],
+      place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
     },
   ]);
+
+  type PlaceInformationType = {
+    place_id: number,
+    name_of_place: string,
+    location_coordinates: number[],
+    place_icon?: string
+  }
 
   // const changeFriendCoordinates = (e: any) => {
   //   e.preventDefault();
@@ -55,15 +66,16 @@ const YandexMap = () => {
 
   return (
     <YMaps>
-      <Map 
+       <Map 
         defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 200, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
+        
       >
         {/* <Placemark defaultGeometry={myCoordinates} 
             /> */}
 
-        {coordinatesList.map((coordinates) =>
-          // <Placemark geometry={coordinates.location_coordinates} options={{
+        {placesList.map((data_place: PlaceInformationType) =>
+          // <Placemark geometry={data_place.location_coordinates} options={{
           //   hintContent: 'Собственный значок метки',
           //   balloonContentLayout: "this.state.balloonContent",
           //   balloonPanelMaxMapArea: 1,
@@ -71,15 +83,26 @@ const YandexMap = () => {
           // }}  modules={["geoObject.addon.balloon"]} 
          
           // />
-<Placemark geometry={coordinates.location_coordinates} 
-          properties={{
-            hintContent: coordinates.name_of_place,
-            balloonContent: 'Это балун'
-        }}
-        modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
 
+          <Placemark 
+            geometry={data_place.location_coordinates} 
+            properties={{
+              hintContent: data_place.name_of_place,
+              balloonContent: '<div id="driver-2" className="driver-card">Hi</div>',
+              // iconContent: data_place.name_of_place[0],
+            }}
+            options={
+              {  
+                // preset: 'islands#circleIcon', // список темплейтов на сайте яндекса
+                // iconColor: 'orange', // цвет иконки, можно также задавать в hex
+                iconLayout: 'default#image',
+                iconImageHref: data_place.place_icon,
+                // iconImageSize: [100,36],
+                // iconImageOffset: [-50,-18] 
+              }
+            }
+            modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
           />
-
         )}
       </Map> 
       {/* <MapSection /> */}
@@ -88,3 +111,4 @@ const YandexMap = () => {
 };
 
 export default YandexMap;
+
