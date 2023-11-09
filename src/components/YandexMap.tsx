@@ -105,6 +105,7 @@ const YandexMap = () => {
                   Производительность: <b>${data_place.capacity} единиц в минуту</b><br>
                 </div>`,
               // iconContent: data_place.name_of_place[0],
+              // suppressMapOpenBlock: false
             }}
             options={
               {  
@@ -112,6 +113,7 @@ const YandexMap = () => {
                 // iconColor: 'orange', // цвет иконки, можно также задавать в hex
                 iconLayout: 'default#image',
                 iconImageHref: data_place.place_icon,
+                suppressMapOpenBlock: false
                 // iconImageSize: [100,36],
                 // iconImageOffset: [-50,-18] 
               }
