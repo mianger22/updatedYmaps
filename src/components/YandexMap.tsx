@@ -38,8 +38,7 @@ const YandexMap = () => {
       place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
     },
   ]);
-
-  const [arrived, setArrived] = useState(true)
+  const [arrived, setArrived] = useState(true);
 
   type PlaceInformationType = {
     place_id: number,
@@ -63,6 +62,10 @@ const YandexMap = () => {
     //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
     // });
   }, []);
+
+  const capture_position_handler = () => {
+    alert(' Позиция захвачена! ')
+  }
 
   return (
     <YMaps>
@@ -94,7 +97,7 @@ const YandexMap = () => {
                   Ресурс: <b>${data_place.received_resource}</b><br>
                   Производительность: <b>${data_place.capacity} единиц в минуту</b><br>
                 </div>`,
-              balloonContentFooter: arrived && 'Захватить позицию'
+              balloonContentFooter: arrived && `<div onclick="alert('Захвачена позиция ${data_place.name_of_place}!')">Захватить позицию</div>`
               // iconContent: data_place.name_of_place[0],
             }}
             options={
