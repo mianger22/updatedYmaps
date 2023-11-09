@@ -62,18 +62,6 @@ const YandexMap = () => {
     // });
   }, []);
 
-  // const multiRoute = new ymaps.multiRouter.MultiRoute(
-  //   {
-  //     referencePoints: [pointA, pointB],
-  //     params: {
-  //       routingMode: "pedestrian"
-  //     }
-  //   },
-  //   {
-  //     boundsAutoApply: true
-  //   }
-  // );
-
   return (
     <YMaps>
        <Map 
@@ -100,12 +88,12 @@ const YandexMap = () => {
               hintContent: data_place.name_of_place,
               balloonContentHeader: data_place.name_of_place,
               balloonContentBody: `
-                <div id="driver-2" className="driver-card">
+                <div className="driver-card">
                   Ресурс: <b>${data_place.received_resource}</b><br>
                   Производительность: <b>${data_place.capacity} единиц в минуту</b><br>
                 </div>`,
+              balloonContentFooter: 'Взять место'
               // iconContent: data_place.name_of_place[0],
-              // suppressMapOpenBlock: false
             }}
             options={
               {  
@@ -113,7 +101,6 @@ const YandexMap = () => {
                 // iconColor: 'orange', // цвет иконки, можно также задавать в hex
                 iconLayout: 'default#image',
                 iconImageHref: data_place.place_icon,
-                suppressMapOpenBlock: false
                 // iconImageSize: [100,36],
                 // iconImageOffset: [-50,-18] 
               }
@@ -128,4 +115,3 @@ const YandexMap = () => {
 };
 
 export default YandexMap;
-
