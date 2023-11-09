@@ -39,6 +39,8 @@ const YandexMap = () => {
     },
   ]);
 
+  const [arrived, setArrived] = useState(true)
+
   type PlaceInformationType = {
     place_id: number,
     name_of_place: string,
@@ -92,7 +94,7 @@ const YandexMap = () => {
                   Ресурс: <b>${data_place.received_resource}</b><br>
                   Производительность: <b>${data_place.capacity} единиц в минуту</b><br>
                 </div>`,
-              balloonContentFooter: 'Взять место'
+              balloonContentFooter: arrived && 'Захватить позицию'
               // iconContent: data_place.name_of_place[0],
             }}
             options={
