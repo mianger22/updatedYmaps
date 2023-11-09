@@ -41,6 +41,7 @@ const YandexMap = () => {
       place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
     },
   ]);
+  const [arrived, setArrived] = useState(true);
 
   // const changeFriendCoordinates = (e: any) => {
   //   e.preventDefault();
@@ -80,8 +81,8 @@ const YandexMap = () => {
          
           // />
           <>
-            <ObjectLabel data_place={data_place} />
-            <ObjectArea data_place={data_place} />
+            <ObjectLabel data_place={data_place} arrived={arrived} />
+            <ObjectArea data_place={data_place} arrived={arrived} />
           </>
         )}
       </Map> 

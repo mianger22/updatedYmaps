@@ -8,5 +8,6 @@ export type PlaceInformationType = {
 }
 
 export type ObjectProps = {
-  data_place: PlaceInformationType
+  data_place: PlaceInformationType,
+  arrived: boolean
 }

@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { Placemark } from 'react-yandex-maps';
 import { ObjectProps, PlaceInformationType } from './types/CommonTypes';
 
 function ObjectLabel(props: ObjectProps) {
   const object_data: PlaceInformationType = props.data_place;
-  const [arrived, setArrived] = useState(true);
+  const arrived: boolean = props.arrived;
 
   return (
     <Placemark 
