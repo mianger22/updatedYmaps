@@ -1,6 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { useState, useEffect } from 'react';
+import { YMaps, Map } from 'react-yandex-maps';
 import { MapSection } from './MapSection';
+import ObjectLabel from './ObjectLabel';
+import ObjectArea from './ObjectArea';
+import { PlaceInformationType } from './types/CommonTypes';
 
 const YandexMap = () => {
   const [myCoordinates, setMyCoordinates] = useState([58.489678163799724, 31.203418886193724]);
@@ -38,16 +41,6 @@ const YandexMap = () => {
       place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
     },
   ]);
-  const [arrived, setArrived] = useState(true);
-
-  type PlaceInformationType = {
-    place_id: number,
-    name_of_place: string,
-    received_resource: string,
-    capacity: number,
-    location_coordinates: number[],
-    place_icon: string
-  }
 
   // const changeFriendCoordinates = (e: any) => {
   //   e.preventDefault();
@@ -86,32 +79,10 @@ const YandexMap = () => {
           // }}  modules={["geoObject.addon.balloon"]} 
          
           // />
-
-          <Placemark 
-            geometry={data_place.location_coordinates} 
-            properties={{
-              hintContent: data_place.name_of_place,
-              balloonContentHeader: data_place.name_of_place,
-              balloonContentBody: `
-                <div className="driver-card">
-                  Ресурс: <b>${data_place.received_resource}</b><br>
-                  Производительность: <b>${data_place.capacity} единиц в минуту</b><br>
-                </div>`,
-              balloonContentFooter: arrived && `<div onclick="alert('Захвачена позиция ${data_place.name_of_place}!')">Захватить позицию</div>`
-              // iconContent: data_place.name_of_place[0],
-            }}
-            options={
-              {  
-                // preset: 'islands#circleIcon', // список темплейтов на сайте яндекса
-                // iconColor: 'orange', // цвет иконки, можно также задавать в hex
-                iconLayout: 'default#image',
-                iconImageHref: data_place.place_icon,
-                // iconImageSize: [100,36],
-                // iconImageOffset: [-50,-18] 
-              }
-            }
-            modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-          />
+          <>
+            <ObjectLabel data_place={data_place} />
+            <ObjectArea data_place={data_place} />
+          </>
         )}
       </Map> 
       {/* <MapSection /> */}
