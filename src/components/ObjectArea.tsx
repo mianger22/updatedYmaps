@@ -6,7 +6,7 @@ function ObjectArea(props: ObjectProps) {
   
   return (
     <Circle
-        geometry={[[58.489678163799724, 31.203418886193724], 2]}
+        geometry={[object_data.location_coordinates, 2]}
         properties={{
           hintContent: object_data.name_of_place,
           balloonContent: object_data.name_of_place,
