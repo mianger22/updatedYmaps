@@ -14,7 +14,8 @@ function ObjectArea(props: ObjectProps) {
           balloonContentBody: `
             <div className="driver-card">
               Ресурс: <b>${object_data.received_resource}</b><br>
-              Производительность: <b>${object_data.capacity} единиц в минуту</b><br>
+              Производительность: <b>${object_data.capacity} единиц в минуту</b><img width="30" height="30" src="https://img.icons8.com/plasticine/30/processor.png" alt="processor"/><br>
+              Подсказка: ${object_data.help}
             </div>`,
           balloonContentFooter: arrived && `<div onclick="alert('Захвачена позиция ${object_data.name_of_place}!')">Захватить позицию</div>`
           // iconContent: data_place.name_of_place[0],

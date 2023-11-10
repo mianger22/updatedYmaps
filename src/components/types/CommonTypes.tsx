@@ -4,7 +4,8 @@ export type PlaceInformationType = {
   received_resource: string,
   capacity: number,
   location_coordinates: number[],
-  place_icon: string
+  place_icon: string,
+  help: string
 }
 
 export type ObjectProps = {

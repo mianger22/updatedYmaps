@@ -15,6 +15,7 @@ function ObjectLabel(props: ObjectProps) {
           <div className="driver-card">
             Ресурс: <b>${object_data.received_resource}</b><br>
             Производительность: <b>${object_data.capacity} единиц в минуту</b><br>
+            Подсказка: ${object_data.help}
           </div>`,
         balloonContentFooter: arrived && `<div onclick="alert('Захвачена позиция ${object_data.name_of_place}!')">Захватить позицию</div>`
         // iconContent: object_data.name_of_place[0],

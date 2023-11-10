@@ -14,7 +14,8 @@ const YandexMap = () => {
       received_resource: 'Роботы',
       capacity: 20,
       location_coordinates: [58.489678163799724, 31.203418886193724],
-      place_icon: 'https://img.icons8.com/plasticine/100/robot.png'
+      place_icon: 'https://img.icons8.com/plasticine/100/robot.png',
+      help: "Ищи качели"
     },
     {
       place_id: 2,
@@ -22,7 +23,8 @@ const YandexMap = () => {
       received_resource: 'Хлеб',
       capacity: 20,
       location_coordinates: [58.490278023042286, 31.20354639149859],
-      place_icon: 'https://img.icons8.com/external-others-cattaleeya-thongsriphong/64/external-bakery-shop-color-line-others-cattaleeya-thongsriphong.png'
+      place_icon: 'https://img.icons8.com/external-others-cattaleeya-thongsriphong/64/external-bakery-shop-color-line-others-cattaleeya-thongsriphong.png',
+      help: "Ищи дуб"
     },
     {
       place_id: 3,
@@ -30,7 +32,8 @@ const YandexMap = () => {
       received_resource: 'Нефть',
       capacity: 7,
       location_coordinates: [58.49011932332594, 31.203280852806106],
-      place_icon: 'https://img.icons8.com/plasticine/100/oil-pump-jack.png'
+      place_icon: 'https://img.icons8.com/plasticine/100/oil-pump-jack.png',
+      help: "Ищи железную старую банку"
     },
     {
       place_id: 4,
@@ -38,7 +41,8 @@ const YandexMap = () => {
       received_resource: 'Запчасти для роботов',
       capacity: 3,
       location_coordinates: [58.489747737563725, 31.204050070106934],
-      place_icon: 'https://img.icons8.com/plasticine/60/factory.png'
+      place_icon: 'https://img.icons8.com/plasticine/60/factory.png',
+      help: "Ищи заборчик"
     },
   ]);
   const [arrived, setArrived] = useState(true);
@@ -62,11 +66,12 @@ const YandexMap = () => {
   }
 
   return (
-    <YMaps>
+    <YMaps query={{ apikey: '2a735605-ac22-41ad-a640-680b0bde6c62' }}>
        <Map 
-        defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 200, searchControlProvider: 'yandex#search' }}
+        defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 600, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
-        
+        width='450px'
+  
       >
         {/* <Placemark defaultGeometry={myCoordinates} 
             /> */}
@@ -83,10 +88,14 @@ const YandexMap = () => {
           <>
             <ObjectLabel data_place={data_place} arrived={arrived} />
             <ObjectArea data_place={data_place} arrived={arrived} />
+            
           </>
         )}
+
+
       </Map> 
       {/* <MapSection /> */}
+
     </YMaps>
   )
 };
