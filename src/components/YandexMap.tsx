@@ -49,7 +49,7 @@ const YandexMap = () => {
       help: "Ищи заборчик"
     },
   ]);
-  const [arrived, setArrived] = useState(true);
+  const [arrived, setArrived] = useState(false);
 
   // const changeFriendCoordinates = (e: any) => {
   //   e.preventDefault();
@@ -70,7 +70,7 @@ const YandexMap = () => {
   }
 
   return (
-    <YMaps query={{ apikey: '2a735605-ac22-41ad-a640-680b0bde6c62' }}>
+    <YMaps>
        <Map 
         defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 600, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
