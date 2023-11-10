@@ -14,7 +14,7 @@ function ObjectLabel(props: ObjectProps) {
         balloonContentBody: `
           <div className="driver-card">
             Ресурс: <b>${object_data.received_resource}</b><br>
-            Производительность: <b>${object_data.capacity} единиц в минуту</b><br>
+            Производительность: <b>${object_data.capacity} единиц в минуту</b><img width="30" height="30" src="${object_data.resource_icon}" /><br>
             Подсказка: ${object_data.help}
           </div>`,
         balloonContentFooter: arrived && `<div onclick="alert('Захвачена позиция ${object_data.name_of_place}!')">Захватить позицию</div>`
