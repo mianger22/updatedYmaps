@@ -63,20 +63,9 @@ const YandexMap = () => {
     // navigator.geolocation.getCurrentPosition((position) => {
     //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
     // });
-  }, []);
-
-  useEffect(() => {
-
-    alert("gg")
-    //получаю местоположение пользователя и сохраняю его
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
-    // });
 
     if (arrived) {
       alert(' Позиция захвачена ');
-
-
     }
   }, [arrived]);
 
@@ -88,7 +77,6 @@ const YandexMap = () => {
         defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 600, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
         width='450px'
-  
       >
         {/* <Placemark defaultGeometry={myCoordinates} 
             /> */}
