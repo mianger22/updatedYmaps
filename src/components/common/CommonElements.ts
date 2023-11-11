@@ -15,7 +15,7 @@ export const CommonProperties = (object_data: PlaceInformationType, arrived: boo
         Производительность: <b>${object_data.capacity} единиц в минуту</b><img width="30" height="30" src="${object_data.resource_icon}" /><br>
         Подсказка: ${object_data.help}
       </div>`,
-    balloonContentFooter: !arrived ? `<div onclick="window.changeStayStatus()">Я на месте</div>` : `<div onclick="alert('Захвачена позиция ${object_data.name_of_place}!')">Захватить позицию</div>`,
+    balloonContentFooter: !arrived ? `<button onclick="window.changeStayStatus()">Я на месте</button>` : `<div onclick="alert('Захвачена позиция ${object_data.name_of_place}!')">Захватить позицию</div>`,
       // iconContent: data_place.name_of_place[0],
   }
 }
