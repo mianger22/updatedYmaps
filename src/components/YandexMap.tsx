@@ -58,12 +58,20 @@ const YandexMap = () => {
   //   console.log(e.get('coords'))
   // };
 
+  const myCurrentPosition = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
+    });
+  }
+
+  const detectedNewMyPosition = () => {
+    myCurrentPosition();
+  }
+
   useEffect(() => {
     //получаю местоположение пользователя и сохраняю его
     if (myCoordinates.toString() === '0,0') {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
-      });
+      myCurrentPosition();
     }
 
     if (arrived) {
@@ -99,11 +107,9 @@ const YandexMap = () => {
             <ObjectArea data_place={data_place} arrived={arrived} setArrived={setArrived} setMyCoordinates={setMyCoordinates} />
           </>
         )}
-
-
       </Map> 
       {/* <MapSection /> */}
-
+      <button onClick={detectedNewMyPosition} className='btn btn-dark btn-sm mt-3 ml-5'>Где я</button>
     </YMaps>
   )
 };

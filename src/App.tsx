@@ -32,19 +32,17 @@ function App() {
     {isTokenExists ? 
       <BrowserRouter>
         <Routes>
-        
-              <Route index element={<Home /> } />
-              <Route path="registration" element={<Registration />} />
-              <Route path="authorization" element={<Authorization />} />
-           
+          <Route index element={<Home /> } />
+          <Route path="registration" element={<Registration />} />
+          <Route path="authorization" element={<Authorization />} />
         </Routes>
       </BrowserRouter>
       : 
       <BrowserRouter>
         <Routes>
-              <Route index element={<Home /> } />
-              <Route path="registration" element={<Registration />} />
-              <Route path="authorization" element={<Authorization />} />
+          <Route index element={<Home /> } />
+          <Route path="registration" element={<Registration />} />
+          <Route path="authorization" element={<Authorization />} />
         </Routes>
       </BrowserRouter>}
     </>
