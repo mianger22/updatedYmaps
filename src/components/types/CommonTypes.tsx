@@ -11,5 +11,6 @@ export type PlaceInformationType = {
 
 export type ObjectProps = {
   data_place: PlaceInformationType,
-  arrived: boolean
+  arrived: boolean,
+  setArrived: any,
 }

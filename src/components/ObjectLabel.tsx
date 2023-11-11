@@ -5,11 +5,11 @@ import { CommonProperties } from './common/CommonElements';
 function ObjectLabel(props: ObjectProps) {
   const object_data: PlaceInformationType = props.data_place;
   const arrived: boolean = props.arrived;
-
+  
   return (
     <Placemark 
       geometry={object_data.location_coordinates} 
-      properties={CommonProperties(object_data, arrived)}
+      properties={CommonProperties(object_data, arrived, props.setArrived)}
       options={
         {  
           // preset: 'islands#circleIcon', // список темплейтов на сайте яндекса

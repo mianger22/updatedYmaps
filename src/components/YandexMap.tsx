@@ -65,9 +65,22 @@ const YandexMap = () => {
     // });
   }, []);
 
-  const capture_position_handler = () => {
-    alert(' Позиция захвачена! ')
-  }
+  useEffect(() => {
+
+    alert("gg")
+    //получаю местоположение пользователя и сохраняю его
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
+    // });
+
+    if (arrived) {
+      alert(' Позиция захвачена ');
+
+
+    }
+  }, [arrived]);
+
+  // const capture_position_handler = alert(' Позиция захвачена! ')
 
   return (
     <YMaps>
@@ -90,8 +103,11 @@ const YandexMap = () => {
          
           // />
           <>
-            <ObjectLabel data_place={data_place} arrived={arrived} />
-            <ObjectArea data_place={data_place} arrived={arrived} />
+            {/* <ObjectLabel data_place={data_place} arrived={arrived} capture_position_handler={capture_position_handler} />
+            <ObjectArea data_place={data_place} arrived={arrived} capture_position_handler={capture_position_handler} /> */}
+
+            <ObjectLabel data_place={data_place} arrived={arrived} setArrived={setArrived} />
+            <ObjectArea data_place={data_place} arrived={arrived} setArrived={setArrived} />
             
           </>
         )}
