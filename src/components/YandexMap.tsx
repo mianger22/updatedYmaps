@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { YMaps, Map } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { MapSection } from './MapSection';
 import ObjectLabel from './ObjectLabel';
 import ObjectArea from './ObjectArea';
 import { PlaceInformationType } from './types/CommonTypes';
 
 const YandexMap = () => {
-  const [myCoordinates, setMyCoordinates] = useState([58.489678163799724, 31.203418886193724]);
+  const [myCoordinates, setMyCoordinates] = useState([0, 0]);
   const [placesList, setPlacesList] = useState([
     {
       place_id: 1,
@@ -60,14 +60,16 @@ const YandexMap = () => {
 
   useEffect(() => {
     //получаю местоположение пользователя и сохраняю его
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
-    // });
+    if (myCoordinates.toString() === '0,0') {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setMyCoordinates([+position.coords.latitude, +position.coords.longitude]);
+      });
+    }
 
     if (arrived) {
       alert(' Позиция захвачена ');
     }
-  }, [arrived]);
+  }, [myCoordinates, arrived]);
 
   // const capture_position_handler = alert(' Позиция захвачена! ')
 
@@ -78,8 +80,7 @@ const YandexMap = () => {
         // onClick={changeFriendCoordinates}
         width='450px'
       >
-        {/* <Placemark defaultGeometry={myCoordinates} 
-            /> */}
+        <Placemark geometry={myCoordinates} />
 
         {placesList.map((data_place: PlaceInformationType) =>
           // <Placemark geometry={data_place.location_coordinates} options={{
@@ -94,9 +95,8 @@ const YandexMap = () => {
             {/* <ObjectLabel data_place={data_place} arrived={arrived} capture_position_handler={capture_position_handler} />
             <ObjectArea data_place={data_place} arrived={arrived} capture_position_handler={capture_position_handler} /> */}
 
-            <ObjectLabel data_place={data_place} arrived={arrived} setArrived={setArrived} />
-            <ObjectArea data_place={data_place} arrived={arrived} setArrived={setArrived} />
-            
+            <ObjectLabel data_place={data_place} arrived={arrived} setArrived={setArrived} setMyCoordinates={setMyCoordinates} />
+            <ObjectArea data_place={data_place} arrived={arrived} setArrived={setArrived} setMyCoordinates={setMyCoordinates} />
           </>
         )}
 

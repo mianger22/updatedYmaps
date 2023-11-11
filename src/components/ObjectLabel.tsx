@@ -9,7 +9,7 @@ function ObjectLabel(props: ObjectProps) {
   return (
     <Placemark 
       geometry={object_data.location_coordinates} 
-      properties={CommonProperties(object_data, arrived, props.setArrived)}
+      properties={CommonProperties(object_data, arrived, props.setArrived, props.setMyCoordinates)}
       options={
         {  
           // preset: 'islands#circleIcon', // список темплейтов на сайте яндекса

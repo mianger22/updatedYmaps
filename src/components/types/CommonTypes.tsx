@@ -13,4 +13,5 @@ export type ObjectProps = {
   data_place: PlaceInformationType,
   arrived: boolean,
   setArrived: any,
+  setMyCoordinates: any
 }

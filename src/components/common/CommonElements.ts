@@ -1,9 +1,19 @@
-import { useEffect, useRef } from "react"
 import { PlaceInformationType } from "../types/CommonTypes"
 
-export const CommonProperties = (object_data: PlaceInformationType, arrived: boolean, setArrived: any) => {
+export const CommonProperties = (object_data: PlaceInformationType, arrived: boolean, setArrived: any, setMyCoordinates: any) => {
   window.changeStayStatus = function() {
-    setArrived(true);
+    // сверять координаты, и если игрок на месте, то менять статус пребывания
+    navigator.geolocation.getCurrentPosition((position) => {
+      const myCoords = [+position.coords.latitude, +position.coords.longitude];
+
+      setMyCoordinates(myCoords);
+
+      if (myCoords === object_data.location_coordinates) {
+        setArrived(true);
+      } else {
+        alert(' Подвинься!, не попал ')
+      }
+    });
   };
 
   return {

@@ -9,7 +9,7 @@ function ObjectArea(props: ObjectProps) {
   return (
     <Circle
         geometry={[object_data.location_coordinates, 2]}
-        properties={CommonProperties(object_data, arrived, props.setArrived)}
+        properties={CommonProperties(object_data, arrived, props.setArrived, props.setMyCoordinates)}
         options={{
           draggable: true,
           fillColor: "#DB709377",
