@@ -1,7 +1,11 @@
 import { PlaceInformationType } from "../types/CommonTypes"
 
 export const CommonProperties = (object_data: PlaceInformationType, arrived: boolean, setArrived: any, setMyCoordinates: any) => {
-  window.changeStayStatus = function() {
+  interface MyWindow {
+    changeStayStatus?: any;
+  }
+  
+  (window as MyWindow).changeStayStatus = function() {
     // сверять координаты, и если игрок на месте, то менять статус пребывания
     navigator.geolocation.getCurrentPosition((position) => {
       const myCoords = [+position.coords.latitude, +position.coords.longitude];

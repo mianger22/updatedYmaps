@@ -6,13 +6,13 @@ import ObjectArea from './ObjectArea';
 import { PlaceInformationType } from './types/CommonTypes';
 
 const YandexMap = () => {
-  const [myCoordinates, setMyCoordinates] = useState([0, 0]);
+  const [myCoordinates, setMyCoordinates] = useState([58.490278023042286, 31.20354639149859]);
   const [placesList, setPlacesList] = useState([
     {
       place_id: 1,
       name_of_place: 'Цех генерации роботов',
       received_resource: 'Роботы',
-      resource_icon: 'https://img.icons8.com/plasticine/30/processor.png',
+      resource_icon: 'https://img.icons8.com/plasticine/30/robot-2.png',
       capacity: 20,
       location_coordinates: [58.489678163799724, 31.203418886193724],
       place_icon: 'https://img.icons8.com/plasticine/100/robot.png',
@@ -21,8 +21,8 @@ const YandexMap = () => {
     {
       place_id: 2,
       name_of_place: 'Пекарня',
-      received_resource: 'Хлеб',
-      resource_icon: 'https://img.icons8.com/plasticine/30/processor.png',
+      received_resource: 'Круассан',
+      resource_icon: 'https://img.icons8.com/plasticine/30/croissant.png',
       capacity: 20,
       location_coordinates: [58.490278023042286, 31.20354639149859],
       place_icon: 'https://img.icons8.com/external-others-cattaleeya-thongsriphong/64/external-bakery-shop-color-line-others-cattaleeya-thongsriphong.png',
@@ -32,7 +32,7 @@ const YandexMap = () => {
       place_id: 3,
       name_of_place: 'Нефтяной насос',
       received_resource: 'Нефть',
-      resource_icon: 'https://img.icons8.com/plasticine/30/processor.png',
+      resource_icon: 'https://img.icons8.com/plasticine/30/oil-industry.png',
       capacity: 7,
       location_coordinates: [58.49011932332594, 31.203280852806106],
       place_icon: 'https://img.icons8.com/plasticine/100/oil-pump-jack.png',
@@ -88,7 +88,7 @@ const YandexMap = () => {
         // onClick={changeFriendCoordinates}
         width='450px'
       >
-        <Placemark geometry={myCoordinates} />
+        {/* <Placemark geometry={myCoordinates} /> */}
 
         {placesList.map((data_place: PlaceInformationType) =>
           // <Placemark geometry={data_place.location_coordinates} options={{
