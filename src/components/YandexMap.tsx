@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, ZoomControl } from 'react-yandex-maps';
 import { MapSection } from './MapSection';
 import ObjectLabel from './ObjectLabel';
 import ObjectArea from './ObjectArea';
@@ -89,6 +89,7 @@ const YandexMap = () => {
         width='450px'
       >
         {/* <Placemark geometry={myCoordinates} /> */}
+        <ZoomControl options={{ float: "right" }} />
 
         {placesList.map((data_place: PlaceInformationType) =>
           // <Placemark geometry={data_place.location_coordinates} options={{
