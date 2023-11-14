@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { YMaps, Map, Placemark, ZoomControl } from 'react-yandex-maps';
-import { MapSection } from './MapSection';
 import ObjectLabel from './ObjectLabel';
 import ObjectArea from './ObjectArea';
 import { PlaceInformationType } from './types/CommonTypes';
 
 const YandexMap = () => {
-  const [myCoordinates, setMyCoordinates] = useState([58.490278023042286, 31.20354639149859]);
+  const [myCoordinates, setMyCoordinates] = useState([0, 0]);
   const [placesList, setPlacesList] = useState([
     {
       place_id: 1,
@@ -88,8 +87,9 @@ const YandexMap = () => {
         // onClick={changeFriendCoordinates}
         width='450px'
       >
-        {/* <Placemark geometry={myCoordinates} /> */}
         <ZoomControl options={{ float: "right" }} />
+
+        <Placemark geometry={myCoordinates} />
 
         {placesList.map((data_place: PlaceInformationType) =>
           // <Placemark geometry={data_place.location_coordinates} options={{
@@ -109,7 +109,6 @@ const YandexMap = () => {
           </>
         )}
       </Map> 
-      {/* <MapSection /> */}
       <button onClick={detectedNewMyPosition} className='btn btn-dark btn-sm mt-3 ml-5'>Где я</button>
     </YMaps>
   )

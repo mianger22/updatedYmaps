@@ -1,11 +1,11 @@
-FROM node:16 as node
+FROM node:16
 
-WORKDIR /usr/src/app
+WORKDIR /core
 
-COPY package.json ./
-RUN yarn install
+COPY public /core/public
+COPY src /core/src
+COPY package.json /core
 
-COPY . .
-RUN npm start
+RUN npm install
 
-EXPOSE 80
+CMD ["npm", "start"]
