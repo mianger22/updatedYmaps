@@ -83,7 +83,7 @@ const YandexMap = () => {
   return (
     <YMaps>
        <Map 
-        defaultState={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 600, searchControlProvider: 'yandex#search' }}
+        state={{ center: myCoordinates, zoom: 17, balloonMaxWidth: 600, searchControlProvider: 'yandex#search' }}
         // onClick={changeFriendCoordinates}
         width='450px'
       >
